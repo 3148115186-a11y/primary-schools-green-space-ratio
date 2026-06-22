@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>城市小学自然教育校园改造方案</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--g:#2d6a4f;--gl:#d8f3dc;--gd:#1b4332;--bg:#fafaf8;--t:#1a1a1a;--ts:#666;--sh:0 2px 16px rgba(0,0,0,.06);--r:12px;--tr:.3s cubic-bezier(.4,0,.2,1);}
+html{scroll-behavior:smooth;}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--t);line-height:1.6;}
+h1,h2,h3,h4{font-family:Georgia,"Noto Serif SC",serif;font-weight:600;}
+
+/* MODAL */
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:900;display:none;align-items:center;justify-content:center;backdrop-filter:blur(2px);}
+.ov.on{display:flex;}
+.md{background:#fff;border-radius:var(--r);box-shadow:0 16px 64px rgba(0,0,0,.18);max-width:540px;width:90%;overflow:hidden;}
+.md-img{width:100%;object-fit:cover;display:block;max-height:220px;}
+.md-bd{padding:22px 26px 18px;}
+.md-bd h3{font-size:1.05rem;color:var(--gd);margin-bottom:3px;}
+.md-ds{font-size:.8rem;color:var(--ts);margin-bottom:14px;}
+.og{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.og.c3{grid-template-columns:repeat(3,1fr);}
+.og.c4{grid-template-columns:repeat(4,1fr);}
+.ob{border:2px solid #e5e5e5;border-radius:10px;background:#fff;cursor:pointer;overflow:hidden;transition:all var(--tr);text-align:center;}
+.ob:hover{border-color:var(--g);transform:translateY(-2px);box-shadow:var(--sh);}
+.ob.on{border-color:var(--g);background:var(--gl);}
+.ob img{width:100%;object-fit:cover;display:block;}
+.ob .ol{padding:7px 4px;font-size:.84rem;font-weight:600;color:var(--t);}
+.ob.on .ol{color:var(--gd);}
+.mn{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:12px;border-top:1px solid #f0f0f0;}
+.bt{padding:8px 18px;border-radius:8px;font-size:.84rem;font-weight:600;cursor:pointer;border:none;transition:all var(--tr);font-family:inherit;}
+.bt-b{background:#f0f0f0;color:var(--ts);}.bt-b:hover{background:#e0e0e0;}
+.bt-n{background:var(--g);color:#fff;box-shadow:0 2px 8px rgba(45,106,79,.25);}.bt-n:hover{background:var(--gd);transform:translateY(-1px);}
+.bt-n:disabled{background:#ccc;color:#999;box-shadow:none;cursor:not-allowed;transform:none;}
+.ir{display:flex;align-items:center;gap:8px;}
+.in{flex:1;padding:9px 12px;border:2px solid #e5e5e5;border-radius:8px;font-size:.88rem;outline:none;transition:border-color var(--tr);}.in:focus{border-color:var(--g);}
+.un{font-size:.84rem;color:var(--ts);}
+
+/* MAIN */
+.main{max-width:780px;margin:0 auto;padding:36px 28px 80px;display:none;}
+.main.on{display:block;}
+.pt{text-align:center;margin-bottom:22px;}
+.pt h1{font-size:1.7rem;color:var(--gd);letter-spacing:.02em;}
+.pt .su{font-size:.84rem;color:var(--ts);margin-top:5px;}
+.sb{background:#fff;border-radius:var(--r);box-shadow:var(--sh);padding:12px 18px;margin-bottom:22px;display:flex;flex-wrap:wrap;align-items:center;gap:6px;}
+.sb .sl{font-size:.74rem;color:var(--ts);font-weight:500;}
+.cp{background:var(--gl);padding:3px 10px;border-radius:100px;font-size:.74rem;font-weight:600;color:var(--gd);}
+.ag{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin-bottom:26px;}
+.ac{background:#fff;border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;cursor:pointer;transition:all var(--tr);border:2px solid transparent;}
+.ac:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(45,106,79,.1);border-color:var(--gl);}
+.ac.on{border-color:var(--g);}
+.ac img{width:100%;height:120px;object-fit:cover;display:block;}
+.ac .ai{padding:11px 14px;}
+.ac h3{font-size:.9rem;margin-bottom:1px;}
+.ac .cn{font-size:.74rem;color:var(--ts);}
+.mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.mh .mt{font-size:1.05rem;color:var(--gd);}
+.mh .mc{font-size:.74rem;background:var(--gl);color:var(--g);padding:3px 10px;border-radius:100px;cursor:pointer;border:none;font-family:inherit;font-weight:500;}
+.mk{background:#fff;border-radius:var(--r);box-shadow:var(--sh);margin-bottom:11px;overflow:hidden;transition:box-shadow var(--tr);}
+.mk:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);}
+.mkh{padding:13px 18px;cursor:pointer;display:flex;align-items:center;gap:10px;}
+.mkn{width:25px;height:25px;background:var(--gl);color:var(--g);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.71rem;font-weight:700;flex-shrink:0;}
+.mkh h4{font-size:.87rem;flex:1;font-family:inherit;font-weight:600;}
+.mka{width:22px;height:22px;border-radius:50%;background:#f0f0f0;display:flex;align-items:center;justify-content:center;transition:all var(--tr);flex-shrink:0;}
+.mka svg{width:11px;height:11px;color:var(--ts);transition:transform var(--tr);}
+.mk.open .mka{background:var(--gl);}.mk.open .mka svg{transform:rotate(180deg);color:var(--g);}
+.mkb{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1);}
+.mk.open .mkb{max-height:1400px;}
+.mki{padding:0 18px 18px;}
+.mki img{width:100%;max-height:350px;object-fit:cover;border-radius:8px;border:1px solid #eee;display:block;margin-bottom:11px;cursor:pointer;}
+.mki p{font-size:.82rem;color:var(--ts);line-height:1.8;}
+.tg{display:inline;font-size:.71rem;font-weight:500;padding:2px 8px;border-radius:6px;background:var(--gl);color:var(--g);margin-right:4px;margin-top:7px;}
+.bm{text-align:center;margin-top:18px;}
+.ft{text-align:center;padding:30px 0 14px;color:#bbb;font-size:.71rem;}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:1000;display:none;align-items:center;justify-content:center;cursor:pointer;}
+.lb.on{display:flex;}
+.lb img{max-width:92vw;max-height:92vh;border-radius:8px;}
+@media(max-width:640px){.main{padding:20px 16px 60px;}.ag{grid-template-columns:1fr 1fr;gap:10px;}.md{width:96%;}.md-bd{padding:16px 14px 14px;}.og.c3,.og.c4{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<div class="lb" id="lb" onclick="this.classList.remove('on')"><img id="lbi" src=""></div>
+
+<!-- M1: 绿地覆盖率 -->
+<div class="ov on" id="m1"><div class="md">
+<div class="md-bd"><h3>校内绿地覆盖率如何？</h3><div class="md-ds">选择最接近您学校实际情况的选项</div>
+<div class="og" id="g1"></div>
+<div class="mn"><div></div><button class="bt bt-n" id="n1" disabled>下一步 →</button></div>
+</div></div></div>
+
+<!-- M2: 楼层 -->
+<div class="ov" id="m2"><div class="md">
+<div class="md-bd"><h3>学校最高楼的楼层高度？</h3><div class="md-ds">选择最接近您学校实际情况的选项</div>
+<div class="og" id="g2"></div>
+<div class="mn"><button class="bt bt-b" id="p2">← 上一步</button><button class="bt bt-n" id="n2" disabled>下一步 →</button></div>
+</div></div></div>
+
+<!-- M3: 降水 -->
+<div class="ov" id="m3"><div class="md">
+<div class="md-bd"><h3>学校的降水条件如何？</h3><div class="md-ds">选择最接近您学校实际情况的选项</div>
+<div class="og" id="g3"></div>
+<div class="mn"><button class="bt bt-b" id="p3">← 上一步</button><button class="bt bt-n" id="n3" disabled>进入改造方案 →</button></div>
+</div></div></div>
+
+<!-- MEX: 部位专属 -->
+<div class="ov" id="mex"><div class="md">
+<img class="md-img" id="exI" src="">
+<div class="md-bd"><h3 id="exT"></h3><div class="md-ds" id="exD"></div>
+<div id="exC"></div>
+<div class="mn"><button class="bt bt-b" id="pex">← 返回</button><button class="bt bt-n" id="nex">查看方案 →</button></div>
+</div></div></div>
+
+<!-- MAIN -->
+<div class="main" id="main">
+<div class="pt"><h1 id="pH"></h1><div class="su" id="pS"></div></div>
+<div class="sb" id="sb"></div>
+<div id="ma"></div>
+<div class="ft"><button class="bt bt-b" onclick="window.location.href='【main】北京市海淀区小学绿地空间分析与规划建议.html#planning'" style="margin-right:8px;">返回规划设计建议</button><button class="bt bt-b" onclick="restart()">重新选择校园状况</button></div>
+</div>
+
+<script>
+var I="校内设计图/",P={},SA=null,AA={},OC={};
+var $=function(id){return document.getElementById(id);};
+
+// === MODAL ===
+function mo(id){$(id).style.display='none';}
+function so(id){$(id).style.display='flex';}
+
+// === OPTIONS ===
+function mkOpts(gridId,opts,imgs,key,cb){
+  var g=$(gridId);g.innerHTML='';
+  g.className='og'+(opts.length===3?' c3':opts.length>=4?' c4':'');
+  opts.forEach(function(o,i){
+    var b=document.createElement('button');
+    b.className='ob';
+    b.setAttribute('data-val',o);
+    var src=imgs&&imgs[i]?I+imgs[i]:'';
+    if(src){
+      var img=document.createElement('img');
+      img.src=src;img.style.height='76px';
+      img.onclick=function(e){e.stopPropagation();LB(src);};
+      b.appendChild(img);
+    }
+    var lbl=document.createElement('div');
+    lbl.className='ol';lbl.textContent=o;
+    b.appendChild(lbl);
+    b.onclick=function(){
+      // update state
+      cb(o);
+      // update visuals only - no DOM rebuild
+      var btns=g.querySelectorAll('.ob');
+      for(var j=0;j<btns.length;j++){
+        if(btns[j].getAttribute('data-val')===o){
+          btns[j].classList.add('on');
+          btns[j].querySelector('.ol').textContent='✓ '+o;
+        }else{
+          btns[j].classList.remove('on');
+          btns[j].querySelector('.ol').textContent=btns[j].getAttribute('data-val');
+        }
+      }
+    };
+    g.appendChild(b);
+  });
+}
+
+// Init 3 steps
+mkOpts('g1',["低","高"],["001.png","002.png"],'',function(v){P['绿地覆盖率']=v;$('n1').disabled=false;});
+mkOpts('g2',["6层以下","高层"],["003.png","004.png"],'',function(v){P['楼层']=v;$('n2').disabled=false;});
+mkOpts('g3',["干(<400mm)","湿(>400mm)"],["005.png","006.png"],'',function(v){P['降水条件']=v;$('n3').disabled=false;});
+
+// === NAV ===
+$('n1').onclick=function(){mo('m1');so('m2');};
+$('p2').onclick=function(){mo('m2');so('m1');};
+$('n2').onclick=function(){mo('m2');so('m3');};
+$('p3').onclick=function(){mo('m3');so('m2');};
+$('n3').onclick=function(){mo('m3');showMain();};
+$('pex').onclick=function(){mo('mex');showMain();};
+$('nex').onclick=function(){mo('mex');showMeasures();};
+
+function LB(s){$('lbi').src=s;$('lb').classList.add('on');}
+function restart(){
+  P={};SA=null;AA={};OC={};
+  $('main').classList.remove('on');
+  // reset option visuals
+  var grids=['g1','g2','g3'];
+  var vals=[["低","高"],["6层以下","高层"],["干(<400mm)","湿(>400mm)"]];
+  grids.forEach(function(gid,gi){
+    var btns=$(gid).querySelectorAll('.ob');
+    for(var j=0;j<btns.length;j++){
+      btns[j].classList.remove('on');
+      btns[j].querySelector('.ol').textContent=vals[gi][j];
+    }
+  });
+  $('n1').disabled=true;$('n2').disabled=true;$('n3').disabled=true;
+  so('m1');
+}
+
+// === MAIN ===
+var DATA=[
+  {id:"corridor",n:"走廊",img:"007.png",
+    pq:[{k:"走廊封闭",q:"您的校园走廊是否为全封闭式？",d:"全封闭指两侧均有玻璃窗；开放式外侧仅有栏杆",o:["是","否"],i:["014.png","015.png"]}],
+    m:[
+      {id:"c1",n:"走廊退台",img:"P01.png",t:"将教学楼走廊或骑楼边缘的安全栏杆向内退让约70厘米，在栏杆外侧外挑出下凹式花池，并种植垂藤植物，使建筑立面充满绿意，实现垂直绿化。",ic:[{k:"楼层",v:"高层"},{k:"走廊封闭",v:"是"}]},
+      {id:"c2",n:"游戏地垫",img:"P02.png",t:"走廊地面铺设带有跳房子、植物元素等游戏图案的彩色EPDM橡胶地垫，将原本仅用于通行的走廊转变为课间游戏、自然观察与生态教育的复合空间。",ic:[]},
+      {id:"c3",n:"走廊观察长廊",img:"P03.png",t:"在走廊或建筑底界面设置模块化的「一米菜园」或盆景式认知角，学生可在课间观察植物生长、记录变化、参与浇水与养护。",ic:[]},
+      {id:"c4",n:"墙面植物迷宫",img:"P04.png",t:"利用教学楼走廊、庭院围墙或建筑转角处的垂直墙面，安装由木制隔板、滑动轴承和定形板面组成的模块化结构，并嵌入可移动的植物种植块。",ic:[]}
+    ]},
+  {id:"atrium",n:"中庭",img:"008.png",
+    pq:[{k:"中庭面积",q:"请输入您的校园中庭面积",d:"估算中庭的长×宽即可",tp:"num"},{k:"中庭有大树",q:"校园中庭是否有大树？",d:"指胸径20cm以上、树冠明显的乔木",o:["是","否"],i:["016.png","017.png"]}],
+    m:[
+      {id:"a1",n:"锁孔花园",img:"P05.png",t:"锁孔花园是一种形状与锁孔相似的种植花园，其弯曲、曲折的边界设计创造了「边界效应」，使花园内所有区域都具有最大的可达性。",ic:[{k:"中庭面积",op:"<",v:50}]},
+      {id:"a2",n:"班级自治农园",img:"P06.png",t:"将教学楼中庭闲置的绿化带改造为班级自治的种植基地，通过划分小块绿地，设置「一米菜园」和木平台。",ic:[{k:"中庭面积",op:"<",v:50}]},
+      {id:"a3",n:"雨水花园",img:"P07.png",t:"在绿化角引入雨水花园，布置细沙、少量卵石并结合水生植物与科普标识。",ic:[{k:"降水条件",v:"干(<400mm)"}]},
+      {id:"a4",n:"可移动模块化种植池",img:"P08.png",t:"采用高度在30～45厘米之间的正方体可移动自然种植池与木质座椅组合。日常散置供学生课间观察。",ic:[{k:"绿地覆盖率",v:"高"},{k:"中庭面积",op:">",v:50}]},
+      {id:"a5",n:"抬高庭院「绿森林」",img:"P09.png",t:"将庭院整体抬高到距离地面75厘米的高度并种满绿植，在用地紧张的校园中创造出沉浸式自然体验空间。",ic:[{k:"中庭面积",op:"<",v:50}]},
+      {id:"a6",n:"树桌花园",img:"P10.png",t:"在保留原有大树的基础上，围绕树干设计曲线流动型、符合40人标准班级尺度的「树桌」。",ic:[{k:"中庭有大树",v:"否"}]},
+      {id:"a7",n:"根系可视化地面",img:"P11.png",t:"以场地中的大树根系为灵感，通过艺术装置将植物根系在地下生长的形态「可视化」地展示在地面上。",ic:[{k:"中庭有大树",v:"否"}]}
+    ]},
+  {id:"rooftop",n:"天台",img:"009.png",pq:[],
+    m:[
+      {id:"r1",n:"天台农场",img:"P12.png",t:"将教学楼的屋顶平台划分为班级「责任田」，种植蔬菜、农作物等可食植物。",ic:[{k:"楼层",v:"高层"}]},
+      {id:"r2",n:"屋顶雨水收集",img:"P13.png",t:"利用建筑屋顶的雨水管系统，将降雨时汇集的屋面雨水引入蓄水池，用于灌溉。",ic:[{k:"楼层",v:"高层"},{k:"降水条件",v:"干(<400mm)"}]}
+    ]},
+  {id:"road",n:"道路",img:"010.png",pq:[],
+    m:[
+      {id:"rd1",n:"游戏与交往空间",img:"P14.png",t:"在道路旁设置绿地，布置跳格子、数字方格等趣味铺装，结合小型游戏设施。",ic:[]},
+      {id:"rd2",n:"自然印记铺装",img:"P15.png",t:"引导学生收集场地内的原生植物落叶，将其形状拓印在地砖上，打造露天的「自然博物馆」。",ic:[]},
+      {id:"rd3",n:"化直为弯探险路",img:"P16.png",t:"采用狭窄、蜿蜒的小径穿过草丘和灌木丛，模糊硬质铺装与绿化的边界。",ic:[{k:"绿地覆盖率",v:"低"}]},
+      {id:"rd4",n:"通道顶棚与生态座椅",img:"P17.png",t:"利用木制骨架搭建顶棚，种植攀援植物形成绿色遮阳结构，布置生态座椅。",ic:[{k:"降水条件",v:"干(<400mm)"}]}
+    ]},
+  {id:"open",n:"大面积空地或绿地",img:"011.png",
+    pq:[{k:"原有场地类型",q:"该地的原有场地类型是什么？",d:"选择该区域当前最主要的地面覆盖类型",o:["草地","空地","林地","灌木"],i:["018.png","019.png","020.png","021.png"]}],
+    m:[
+      {id:"o1",n:"果实采摘园",img:"P18.png",t:"选用乡土果树品种，采用群落式或行列式种植，形成可食用的果园景观。",st:["草地","空地"],ic:[]},
+      {id:"o2",n:"可食地景与生态实验田",img:"P19.png",t:"种植固氮植物以及各类应季蔬菜，学生可开展简单的生态实验。",st:["草地","空地"],ic:[]},
+      {id:"o3",n:"微地形草坡",img:"P20.png",t:"营造高度在0.5米至1.5米之间的微地形草坡，满足儿童「爬高上低」的天性。",st:["草地","空地"],ic:[]},
+      {id:"o4a",n:"基于年龄分异的游戏区",img:"P21.png",t:"根据不同年龄段儿童的生理特点和游戏偏好进行分区设计。",st:["草地","空地","林地"],ic:[]},
+      {id:"o4b",n:"植物迷宫",img:"P22.png",t:"利用易修剪的灌木围合形成植物迷宫，满足中高年级儿童的探险欲望。",st:["灌木","空地"],ic:[]},
+      {id:"o5",n:"五感花园",img:"P23.png",t:"从视觉、触觉、嗅觉、听觉、味觉五个维度进行植物配置。",st:["林地","灌木","草地"],ic:[]},
+      {id:"o6",n:"昆虫与鸟类生境",img:"P24.png",t:"设置「昆虫旅馆」，建立「植物—昆虫—鸟类」的可视化生态链。",st:["林地","灌木"],ic:[]},
+      {id:"o7",n:"木屋教室",img:"P25.png",t:"利用自然高差或林下空间，设置原木搭建的「木屋教室」。",st:["林地","灌木","草地"],ic:[]},
+      {id:"o8",n:"树桌花园",img:"P26.png",t:"围绕树干设计曲线流动型的「树桌」，师生可在树荫下开展课程。",st:["林地"],ic:[]}
+    ]},
+  {id:"corner",n:"建筑角落",img:"012.png",pq:[],
+    m:[
+      {id:"cr1",n:"建筑拐角花境",img:"P27.png",t:"利用建筑拐角处设置花池，底部安装万向轮灵活调整位置。",ic:[]},
+      {id:"cr2",n:"下凹绿地与生态石笼",img:"P28.png",t:"通过下凹处理形成微洼地，底部铺设碎石达到雨水收集和下渗的目的。",ic:[{k:"降水条件",v:"干(<400mm)"}]},
+      {id:"cr3",n:"驱动式水池",img:"P29.png",t:"设置小型驱动式水池，配备手动驱动装置，直观展示水循环原理。",ic:[]},
+      {id:"cr4",n:"高低花箱自然感知角",img:"P30.png",t:"设置两种高度的植物花箱，种植异形叶植物或芳香植物。",ic:[]}
+    ]},
+  {id:"balcony",n:"阳台/窗台",img:"013.png",pq:[],
+    m:[
+      {id:"b1",n:"立面阳台绿化",img:"P31.png",t:"利用阳台或窗台台沿的微空间，种植轻质、易于打理的植物。",ic:[]},
+      {id:"b2",n:"阳台微型绿地",img:"P32.png",t:"降低教室临空窗台高度，在阳台外侧设置下凹式花池。",ic:[{k:"楼层",v:"高层"}]}
+    ]}
+];
+
+function showMain(){
+  $('main').classList.add('on');
+  renderAreas();
+}
+function renderAreas(){
+  SA=null;AA={};
+  $('pH').textContent='选择改造部位';
+  $('pS').textContent='选择您想要改造的校园空间类型';
+  renderSum();
+  var h='<div class="ag">';
+  DATA.forEach(function(a){
+    h+='<div class="ac" data-id="'+a.id+'">';
+    h+='<img src="'+I+a.img+'" alt="'+a.n+'">';
+    h+='<div class="ai"><h3>'+a.n+'</h3><div class="cn">'+a.m.length+' 个方案</div></div></div>';
+  });
+  h+='</div>';
+  $('ma').innerHTML=h;
+  // bind clicks
+  var cards=$('ma').querySelectorAll('.ac');
+  for(var i=0;i<cards.length;i++){
+    cards[i].onclick=(function(el){
+      return function(){pickArea(el.getAttribute('data-id'));};
+    })(cards[i]);
+  }
+}
+function pickArea(id){
+  SA=DATA.find(function(a){return a.id===id;});
+  AA={};OC={};
+  if(SA.pq.length>0)showEx();
+  else showMeasures();
+}
+function showEx(){
+  $('exI').src=I+SA.img;
+  $('exT').textContent=SA.n+' — 补充信息';
+  $('exD').textContent='回答以下问题，进一步筛选适用方案';
+  var c='';
+  SA.pq.forEach(function(q,i){
+    c+='<div style="margin-bottom:12px;">';
+    c+='<div style="font-size:.84rem;font-weight:600;margin-bottom:3px;">'+q.q+'</div>';
+    if(q.d)c+='<div style="font-size:.74rem;color:var(--ts);margin-bottom:7px;">'+q.d+'</div>';
+    if(q.tp==='num'){
+      c+='<div class="ir"><input class="in" type="number" placeholder="请输入数值" id="exIn'+i+'"><span class="un">㎡</span></div>';
+    }else{
+      c+='<div class="og" id="exG'+i+'"></div>';
+    }
+    c+='</div>';
+  });
+  $('exC').innerHTML=c;
+  // bind number inputs
+  SA.pq.forEach(function(q,i){
+    if(q.tp==='num'){
+      $('exIn'+i).oninput=function(){AA[q.k]=this.value?Number(this.value):'';};
+    }else{
+      mkOpts('exG'+i,q.o,q.i,q.k,function(v){AA[q.k]=v;});
+    }
+  });
+  so('mex');
+}
+function showMeasures(){
+  var all=Object.assign({},P,AA);
+  var fm=filtM(SA,all);
+  $('pH').textContent='适合您的改造方案';
+  $('pS').innerHTML='根据您学校的条件，共筛选出 <b style="color:var(--g)">'+fm.length+'</b> 个适用方案';
+  renderSum();
+  var h='';
+  if(fm.length>0){
+    var ao=fm.every(function(m){return OC[m.id];});
+    h+='<div class="mh"><div class="mt">'+SA.n+'</div><button class="mc" onclick="allM()">'+(ao?'全部收起':'全部展开')+'</button></div>';
+    fm.forEach(function(m,i){
+      h+='<div class="mk'+(OC[m.id]?' open':'')+'" data-mid="'+m.id+'">';
+      h+='<div class="mkh"><div class="mkn">'+String(i+1).padStart(2,'0')+'</div><h4>'+m.n+'</h4>';
+      h+='<div class="mka"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div>';
+      h+='<div class="mkb"><div class="mki">';
+      h+='<img src="'+I+m.img+'" onclick="LB(\''+I+m.img+'\')">';
+      h+='<p>'+m.t+'</p>';
+      if(m.st)m.st.forEach(function(s){h+='<span class="tg">适用场地：'+s+'</span>';});
+      h+='</div></div></div>';
+    });
+  }else{
+    h+='<div style="text-align:center;padding:50px 20px;color:#bbb;"><div style="font-size:2rem;margin-bottom:8px;">🍃</div><p>根据当前条件暂无完全匹配的方案，请尝试调整条件重新筛选。</p></div>';
+  }
+  h+='<div class="bm"><button class="bt bt-b" onclick="renderAreas()">← 重新选择部位</button></div>';
+  $('ma').innerHTML=h;
+  // bind toggle clicks
+  var cards=$('ma').querySelectorAll('.mk');
+  for(var i=0;i<cards.length;i++){
+    cards[i].querySelector('.mkh').onclick=(function(el){
+      return function(){OC[el.getAttribute('data-mid')]=!OC[el.getAttribute('data-mid')];showMeasures();};
+    })(cards[i]);
+  }
+}
+function allM(){
+  var all=Object.assign({},P,AA);
+  var f=filtM(SA,all);
+  var ao=f.every(function(m){return OC[m.id];});
+  f.forEach(function(m){OC[m.id]=!ao;});
+  showMeasures();
+}
+function renderSum(){
+  var h='<span class="sl">筛选依据：</span>';
+  h+='<span class="cp">'+P['绿地覆盖率']+'</span>';
+  h+='<span class="cp">'+P['楼层']+'</span>';
+  h+='<span class="cp">'+P['降水条件']+'</span>';
+  if(SA)SA.pq.forEach(function(q){
+    if(AA[q.k]!==undefined&&AA[q.k]!==''){
+      h+='<span class="cp">'+(q.tp==='num'?AA[q.k]+'㎡':AA[q.k])+'</span>';
+    }
+  });
+  $('sb').innerHTML=h;
+}
+function filtM(area,a){
+  return area.m.filter(function(m){
+    for(var i=0;i<m.ic.length;i++){
+      var c=m.ic[i],v=a[c.k];
+      if(v===undefined||v===null||v==='')continue;
+      if(c.op==='<'&&Number(v)<c.v)return false;
+      if(c.op==='>'&&Number(v)>c.v)return false;
+      if(!c.op&&v===c.v)return false;
+    }
+    if(m.st){var s=a['原有场地类型'];if(s&&m.st.indexOf(s)===-1)return false;}
+    return true;
+  });
+}
+</script>
+</body>
+</html>
